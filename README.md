@@ -25,8 +25,7 @@
  
  ai_wf_capstone_summary.pptx
  
- Note - On windows 10, may face issue with port not being bind to IP. Flask API to run on Linux. On windows faced issues with with port not being bind to IP
- 
+  
 The following questions are being evaluated as part of the peer review submission:
 
 1. Are there unit tests for the API?
