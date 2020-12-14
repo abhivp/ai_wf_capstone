@@ -13,7 +13,7 @@
  
   3. To run just the API or Models or Logs. Run respective commands
  
- python unittests/ApiTests.py
+ python unittests/ApiTests.py   (Make sure app.py is run, for the APIs to be available)
  
  python unittests/ModelTests.py
  
