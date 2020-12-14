@@ -1,0 +1,22 @@
+Run_Date,unique_id,time_stamp,prefix,Country,Range Start Date,Range End Date,eval_test,RunTime,Model_Version,Model_Version_Note,Test
+2020-12-12,66198c43-8263-4349-959d-d711bcaef74a,1607770041.278145,test,all,2017-11-29,2019-05-31,{'rmse': 17425},000:00:14,0.1,supervised learning model for time-series,True
+2020-12-12,3c5c8804-4935-4a63-a266-c4c2e1d089ae,1607770325.2774148,test,all,2017-11-29,2019-05-31,{'rmse': 17425},000:00:14,0.1,supervised learning model for time-series,True
+2020-12-12,444da848-51cc-4f56-84ef-063847fa08ea,1607770798.3395288,test,all,2017-11-29,2019-05-30,{'rmse': 31513},000:00:09,0.1,supervised learning model for time-series,True
+2020-12-12,3465d7a9-35da-4b13-a8e9-f7fb1419366f,1607770804.4020243,test,united_kingdom,2017-11-29,2019-05-24,{'rmse': 27785},000:00:06,0.1,supervised learning model for time-series,True
+2020-12-12,abe4f5d4-3e27-46f0-8207-eeaf4ef0bd44,1607770804.4176478,test,all,2017-11-29,2019-05-31,{'rmse': 17425},000:00:14,0.1,supervised learning model for time-series,True
+2020-12-12,0774078e-5147-4079-8f6f-9d634e99c49b,1607771084.9489346,test,all,2017-12-04,2019-05-13,{'rmse': 38448},000:00:09,0.1,supervised learning model for time-series,True
+2020-12-12,38b8a6a8-4a2c-4a3b-887a-1e9da90b6ce9,1607771090.9020278,test,united_kingdom,2017-12-01,2019-05-25,{'rmse': 30225},000:00:05,0.1,supervised learning model for time-series,True
+2020-12-12,4102bc5f-8789-469b-9054-ff3efc344e52,1607771388.4283407,test,all,2017-12-01,2019-05-30,{'rmse': 42210.0},000:00:09,0.1,supervised learning model for time-series,True
+2020-12-12,d3fe083c-1fd2-445a-b15f-d73b790057ca,1607771397.6002305,test,united_kingdom,2017-11-30,2019-05-30,{'rmse': 33923.0},000:00:09,0.1,supervised learning model for time-series,True
+2020-12-12,ff5f0147-afbf-4de5-9b2c-41ac4402bb40,1607785755.7636533,test,all,2017-11-30,2019-05-26,{'rmse': 36240},000:00:21,0.1,supervised learning model for time-series,True
+2020-12-12,8b435239-9fb1-4b9b-9dae-990151b89215,1607785765.0413325,test,united_kingdom,2017-11-30,2019-05-21,{'rmse': 33004},000:00:09,0.1,supervised learning model for time-series,True
+2020-12-12,691235a4-47d2-47c1-b566-18e2fcfd4fa8,1607785765.0515137,test,all,2017-11-29,2019-05-31,{'rmse': 17425},000:00:14,0.1,supervised learning model for time-series,True
+2020-12-12,48e6c581-81f2-4e17-9096-bd3b3bb0761a,1607785843.068227,test,all,2017-11-29,2019-05-31,{'rmse': 44311},000:00:14,0.1,supervised learning model for time-series,True
+2020-12-12,c6a2db8d-ea23-4639-bb22-24517422a768,1607785851.9672234,test,united_kingdom,2017-11-29,2019-05-29,{'rmse': 50882},000:00:08,0.1,supervised learning model for time-series,True
+2020-12-12,43bd687b-99fe-4695-930a-f7c937e71855,1607786219.1214495,test,all,2017-12-03,2019-05-29,{'rmse': 33129.0},000:00:11,0.1,supervised learning model for time-series,True
+2020-12-12,726899b6-0253-457b-8070-135c9b70070e,1607786232.6928933,test,united_kingdom,2017-11-29,2019-05-31,{'rmse': 37597.0},000:00:13,0.1,supervised learning model for time-series,True
+2020-12-12,ddc29ade-b88e-4477-ac7c-18e63573f87d,1607786399.225476,test,all,2017-11-29,2019-05-25,{'rmse': 52674},000:00:21,0.1,supervised learning model for time-series,True
+2020-12-12,d2a0f5a0-e4c4-4884-b265-12cf5b958638,1607786408.7253342,test,united_kingdom,2017-12-04,2019-05-24,{'rmse': 33394},000:00:09,0.1,supervised learning model for time-series,True
+2020-12-12,e0a10fbb-1d3a-4f63-b356-53f3b8ebf4c7,1607786408.7283595,test,all,2017-11-29,2019-05-31,{'rmse': 17425},000:00:14,0.1,supervised learning model for time-series,True
+2020-12-12,1e101b62-9a86-4bfc-bca6-5093c4608762,1607786465.79673,test,all,2017-12-01,2019-05-27,{'rmse': 30511},000:00:08,0.1,supervised learning model for time-series,True
+2020-12-12,917d77ca-83f4-4998-be45-0a28a4c0ba21,1607786473.4818134,test,united_kingdom,2017-12-01,2019-05-31,{'rmse': 44245},000:00:07,0.1,supervised learning model for time-series,True
