@@ -1,6 +1,8 @@
 # ai_wf_capstone
  Coursera AI Workflow Project
  
+ Note - Setup Python environment with required packages and folder structure by clone repository
+ 
  ## 1. Running the application
  
  python app.py
