@@ -14,7 +14,9 @@
   3. To run just the API or Models or Logs. Run respective commands
  
  python unittests/ApiTests.py
+ 
  python unittests/ModelTests.py
+ 
  python LoggerTests.py
  
  4. Train Models 
