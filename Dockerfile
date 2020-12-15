@@ -1,25 +1,23 @@
-# Use an official Python runtime as a parent image
-FROM python:3.7.5-stretch
+FROM python:3.8
 
-RUN apt-get update && apt-get install -y \
-python3-dev \
-build-essential    
-        
-# Set the working directory to /app
-WORKDIR /app
+WORKDIR /ai_wf_capstone
 
-# Copy the current directory contents into the container at /app
-ADD . /app
+COPY ./data/ /ai_wf_capstone/data/
+COPY ./logs/ /ai_wf_capstone/logs/
+COPY ./models/ /ai_wf_capstone/models/
+COPY ./unittests/ /ai_wf_capstone/unittests/
+COPY ./templates/ /ai_wf_capstone/templates/
+COPY app.py /ai_wf_capstone/
+COPY model.py /ai_wf_capstone/
+COPY _init_.py /ai_wf_capstone/
+COPY data_ingestion.py /ai_wf_capstone/
+COPY logger.py /ai_wf_capstone/
+COPY run-model-train.py /ai_wf_capstone/
+COPY run-tests.py /ai_wf_capstone/
+COPY cslib.py /ai_wf_capstone/
+COPY requirements.txt /ai_wf_capstone/
 
-# Install any needed packages specified in requirements.txt
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 80 available to the world outside this container
-EXPOSE 80
-
-# Define environment variable
-ENV NAME World
-
-# Run app.py when the container launches
-CMD ["python", "app.py"]
+CMD [ "python", "./app.py" ]
