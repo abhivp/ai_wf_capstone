@@ -1,4 +1,3 @@
-
 # import model specific functions and variables
 from model import model_train
 from model import model_load
@@ -14,24 +13,28 @@ import re
 import time
 from datetime import datetime as dt
 
-
 app = Flask(__name__)
+
 
 @app.route("/")
 def landing():
     return render_template('index.html')
 
+
 @app.route('/index')
 def index():
     return render_template('index.html')
+
 
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
 
+
 @app.route('/running', methods=['POST'])
 def running():
     return render_template('running.html')
+
 
 @app.route('/predict', methods=['GET'])
 def predict():
@@ -46,17 +49,16 @@ def predict():
     """
     run_start = time.time()
 
-    country = request.args.get('country', default = 'all', type = str)
-    date = request.args.get('date', default = '2019-05-06', type = str)
+    country = request.args.get('country', default='all', type=str)
+    date = request.args.get('date', default='2019-05-06', type=str)
     startDate = dt.strptime("2017-11-29", "%Y-%m-%d")
     endDate = dt.strptime("2019-05-31", "%Y-%m-%d")
     try:
         predictDate = dt.strptime(date, "%Y-%m-%d")
     except:
-        return jsonify(errMsg = 'Error Date, date should be in range 2017-11-29  -  2019-05-31')
+        return jsonify(errMsg='Error Date, date should be in range 2017-11-29  -  2019-05-31')
 
-
-    if predictDate >=startDate and predictDate < endDate:
+    if startDate <= predictDate < endDate:
         dataSplit = date.split('-')
         year = dataSplit[0]
         month = dataSplit[1]
@@ -65,13 +67,13 @@ def predict():
             result = model_predict(prefix='sl', country=country, year=year, month=month, day=day)
         except:
             return jsonify(msg='model_predict error')
-        m, s = divmod(time.time()-run_start,60)
+        m, s = divmod(time.time() - run_start, 60)
         h, m = divmod(m, 60)
 
-        return jsonify(status='OK', date = date, country = country, y_pred = result['y_pred'][0], runningTime = "%d:%02d:%02d"%(h, m, s),)
+        return jsonify(status='OK', date=date, country=country, y_pred=result['y_pred'][0],
+                       runningTime="%d:%02d:%02d" % (h, m, s), )
     else:
-        return jsonify(errMsg = 'Error Date, date should be in range 2017-11-29  -  2019-05-31')
-
+        return jsonify(errMsg='Error Date, date should be in range 2017-11-29  -  2019-05-31')
 
 
 @app.route('/train', methods=['GET', 'POST'])
