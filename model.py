@@ -141,7 +141,6 @@ def model_load(country, prefix='sl', data_dir=None, training=True):
 
     all_models = {}
     for model in models:
-        split_name = re.split("-", model)[1]
         all_models[re.split("-", model)[1]] = joblib.load(os.path.join(MODEL_DIR, model))
 
 
