@@ -136,15 +136,16 @@ def model_load(country, prefix='sl', data_dir=None, training=True):
     # country when passed will load that country's model. 'all' will all models
     model_name = prefix + '-' + country
     models = [f for f in os.listdir(os.path.join(MODEL_DIR)) if re.search(model_name, f)]
-
     if len(models) == 0:
         raise Exception("Models with prefix '{}' cannot be found did you train?".format(prefix))
 
     all_models = {}
     for model in models:
+        split_name = re.split("-", model)[1]
         all_models[re.split("-", model)[1]] = joblib.load(os.path.join(MODEL_DIR, model))
 
-    ## load data
+
+    # load data
     ts_data = fetch_ts(data_dir)
     all_data = {}
     for country, df in ts_data.items():
@@ -218,17 +219,17 @@ if __name__ == "__main__":
     """
 
     # train the model
-    print("TRAINING MODELS")
-    base_dir = Path(__file__).parent
-    DATA_DIR = Path(base_dir / "data" / "cs-train").resolve()
-
+    # print("TRAINING MODELS")
+    # base_dir = Path(__file__).parent
+    # DATA_DIR = Path(base_dir / "data" / "cs-train").resolve()
+    #
     # data_dir = os.path.join("data", "cs-train")
-    model_train(data_dir=DATA_DIR, prefix='sl', test=False)
+    # model_train(data_dir=DATA_DIR, prefix='sl', test=False)
 
     # load the model. Need to specify country or "all" will load models for all countries
-    print("LOADING MODELS")
-    all_data, all_models = model_load(country='all', prefix='sl', data_dir=DATA_DIR, training=False)
-    print("... models loaded: ", ",".join(all_models.keys()))
+    # print("LOADING MODELS")
+    # all_data, all_models = model_load(country='all', prefix='sl', data_dir=DATA_DIR, training=False)
+    # print("... models loaded: ", ",".join(all_models.keys()))
 
     # test predict
     prefix = 'sl'

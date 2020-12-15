@@ -11,7 +11,9 @@ from flask import Flask, jsonify, request
 from flask import render_template, send_from_directory
 import os
 import re
-import numpy as np
+import time
+from datetime import datetime as dt
+
 
 app = Flask(__name__)
 
@@ -31,53 +33,45 @@ def dashboard():
 def running():
     return render_template('running.html')
 
-
-@app.route('/predict', methods=['GET', 'POST'])
+@app.route('/predict', methods=['GET'])
 def predict():
     """
     basic predict function for the API
+
+    country='all'
+    year='2019'
+    month='04'
+    day='06'
+    2017-11-29    2019-05-31
     """
+    run_start = time.time()
 
-    # input checking
-    if not request.json:
-        print("ERROR: API (predict): did not receive request data")
-        return jsonify([])
-
-    if 'country' not in request.json:
-        print("ERROR API (predict): received request, but no 'country' found within")
-        return jsonify([])
-
-    # set the test flag
-    test = False
-    if 'mode' in request.json and request.json['mode'] == 'test':
-        test = True
-
-    # extract the query parameters
-    prefix = request.json['prefix']
-    country = request.json['country']
-    year = request.json['year']
-    month = request.json['month']
-    day = request.json['day']
+    country = request.args.get('country', default = 'all', type = str)
+    date = request.args.get('date', default = '2019-05-06', type = str)
+    startDate = dt.strptime("2017-11-29", "%Y-%m-%d")
+    endDate = dt.strptime("2019-05-31", "%Y-%m-%d")
+    try:
+        predictDate = dt.strptime(date, "%Y-%m-%d")
+    except:
+        return jsonify(errMsg = 'Error Date, date should be in range 2017-11-29  -  2019-05-31')
 
 
-    # load model
-    all_data, all_models = model_load(country, prefix, data_dir=DATA_DIR, training=False)
-    model = all_models[country]
+    if predictDate >=startDate and predictDate < endDate:
+        dataSplit = date.split('-')
+        year = dataSplit[0]
+        month = dataSplit[1]
+        day = dataSplit[2]
+        try:
+            result = model_predict(prefix='sl', country=country, year=year, month=month, day=day)
+        except:
+            return jsonify(msg='model_predict error')
+        m, s = divmod(time.time()-run_start,60)
+        h, m = divmod(m, 60)
 
-    if not model:
-        print("ERROR: model is not available")
-        return jsonify([])
-    _result = model_predict(prefix, country, year, month, day, test=test)
-    result = {}
+        return jsonify(status='OK', date = date, country = country, y_pred = result['y_pred'][0], runningTime = "%d:%02d:%02d"%(h, m, s),)
+    else:
+        return jsonify(errMsg = 'Error Date, date should be in range 2017-11-29  -  2019-05-31')
 
-    # convert numpy objects to ensure they are serializable
-    for key, item in _result.items():
-        if isinstance(item, np.ndarray):
-            result[key] = item.tolist()
-        else:
-            result[key] = item
-
-    return (jsonify(result))
 
 
 @app.route('/train', methods=['GET', 'POST'])
