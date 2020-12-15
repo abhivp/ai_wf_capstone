@@ -19,7 +19,7 @@
  
  python unittests/ModelTests.py
  
- python LoggerTests.py
+ python unittests/LoggerTests.py
  
  ## 4. Train Models 
  
@@ -34,19 +34,21 @@ The following questions are being evaluated as part of the peer review submissio
 
 ## Are there unit tests for the API?
 
-To test api (run api server before using app.py), then run ApiTests.py (testing is setup as 'mode': 'test') 
+To test api (run api server), then run - python unittests/ApiTests.py
 
 ## Are there unit tests for the model?
 
-Run ModelTests.py (testing is setup as 'mode': 'test')
+Run - python unittests/ModelTests.py 
 
 ## Are there unit tests for the logging?
 
-Run LoggerTests.py (testing is setup as 'mode': 'test')
+Run - python unittests/LoggerTests.py
 
 ## Can all of the unit tests be run with a single script and do all of the unit 1. tests pass?
 
-Run run-tests.py to test all the test at once (Remember to run api server before using app.py, otherwise API tests will be skipped)
+Run - python run-tests.py
+
+(Remember to run api server before using app.py, otherwise API tests will be skipped)
 
 ## Was there an attempt to isolate the read/write unit tests from production 1. models and logs?
 
@@ -54,7 +56,14 @@ Controlled by passing prefix. Testing produces log files as train-test.log, pred
 
 ## Does the API work as expected? For example, can you get predictions for a 1. specific country as well as for all countries combined?
 
-Remember to run api server before using app.py and submit post request to predict API. Similar to what is done in ApiTests.py
+start api by running: $ python app.py
+
+open following url in browser: (Firstime may took a minute or two to load models)
+
+http://localhost:8080/predict?country=united_kingdom&date=2019-05-05
+
+http://localhost:8080/predict?country=all&date=2019-05-05
+
 
 ## Does the data ingestion exists as a function or script to facilitate 1. automation? 
 
@@ -70,12 +79,21 @@ Please refer to ai_wf_eda_visuals.ipynb for visuals, as well as ai_wf_eda.py for
 
 ## Is everything containerized within a working Docker image?
 
-Please refer to Dockerfile, requirements.txt. Using Docker Desktop create image and run the container (on windows 10 the port mapping becomes an issue, should work on Linux)
+Build image from Dockerfile, requirements.txt
+
+docker build -t ai_wf_ml_app .
+
+docker image ls
+
+run docker
+
+docker run -d -p 8080:8080 ai_wf_ml_app
+
+Issue below URL in the browser to test API
+
+http://localhost:8080/predict?country=united_kingdom&date=2019-05-05
+
 
 ## Did they use a visualization to compare their model to the baseline model?
 
-Please refer to compare_model_performance.ipynb and ai_wf_eda_visuals.ipynb for visuals
-
 ## Is there a mechanism to monitor performance?
-
-Not created yet. WIP.
